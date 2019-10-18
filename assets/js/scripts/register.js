@@ -1,4 +1,6 @@
-$("#form1").submit(function(e) {
+$(document).ready(function () {
+
+  $("#form1").submit(function (e) {
     e.preventDefault();
 
     let role = $("[name=role]");
@@ -57,3 +59,5 @@ $("#form1").submit(function(e) {
     }
 
   }
+
+});

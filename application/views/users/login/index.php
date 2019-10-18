@@ -1,9 +1,9 @@
-  <div class="container">
+  <div class="container" style="height:100vh;">
 
     <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="height:100%;">
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="col-xl-10 col-lg-12 col-md-9"  style="align-self: center;">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
