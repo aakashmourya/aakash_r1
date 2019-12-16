@@ -3,10 +3,8 @@ $(document).ready(function () {
   $("#form1").submit(function (e) {
     e.preventDefault();
 
-
     let email = $("[name=email]");
     let password = $("[name=password]");
-
 
     let error = "";
 
@@ -19,32 +17,31 @@ $(document).ready(function () {
     }
 
     if (error != "") {
-      showAlert(error, 'danger');
+      showAlertOnPage($("#form1"),error,'danger');
       return;
     }
 
     let formData = new FormData(this);
-    let url = BASE_URL + 'login/validate';
+    let url = BASE_URL + 'Login/validate';
     showBtnProgress();
     AjaxPost(formData, url, AjaxSuccess, AjaxError);
 
   });
 
   function AjaxSuccess(content) {
-    // hideBtnProgress();
-    //console.log(content);
-    //return;
+   
     let result = JSON.parse(content);
     if (result.success) {
-      showAlert(result.message);
+      showAlertOnPage($("#form1"),result.message);
+    
       setTimeout(() => {
-        hideBtnProgress();
-        window.location.replace(BASE_URL + "Users");
-      }, 500);
+        window.location.replace(result.home_url);
+      }, 1000);
 
     } else {
       hideBtnProgress();
-      showAlert(result.message, 'danger');
+      showAlertOnPage($("#form1"),result.message,'danger');
+    
     }
 
   }

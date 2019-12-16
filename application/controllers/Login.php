@@ -1,10 +1,10 @@
 <?php
 class Login extends ci_controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
+
 		date_default_timezone_set("Asia/Kolkata");
 
 		if (isset($_SESSION['userInfo']) && !empty($_SESSION['userInfo'])) {
@@ -70,8 +70,12 @@ class Login extends ci_controller
 
 			if ($result) {
 				$result = $result[0];
+				$home_url = base_url("Users");
+				// if ($result['parent_id'] == 'root') {
+				// 	$home_url = base_url("Users");
+				// }
 				$this->session->set_userdata("userInfo", $result, isset($_POST['rememberme']) ? true : false);
-				echo json_encode(array('success' => true, 'message' => 'Login successfully'));
+				echo json_encode(array('success' => true, 'message' => 'Login successfully', "home_url" => $home_url));
 			} else {
 				echo json_encode(array('success' => false, 'message' => 'Please enter valid credentials'));
 			}
@@ -79,6 +83,4 @@ class Login extends ci_controller
 			echo json_encode(array('success' => false, 'message' => 'System error found, Please contact service provider'));
 		}
 	}
-
-	
 }

@@ -10,10 +10,10 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
  :root {
-    --primary: rgb(24, 105, 175);
-    --primary-hover: rgb(18, 76, 126);
-    --primary-gradient: rgb(46, 170, 243);
-    --form-control-focus: rgb(211, 231, 248);
+    --primary: rgb(24, 175, 154);
+    --primary-hover: rgb(20, 121, 107);
+    --primary-gradient: rgb(0, 251, 124);
+    --form-control-focus: rgb(213, 232, 230);
     --secondary: #494949;
     
     --blue: #4e73df;

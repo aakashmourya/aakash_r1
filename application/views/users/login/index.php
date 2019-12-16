@@ -3,7 +3,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center" style="height:100%;">
 
-      <div class="col-xl-10 col-lg-12 col-md-9"  style="align-self: center;">
+      <div class="col-xl-10 col-lg-12 col-md-9" style="align-self: center;">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -13,9 +13,11 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Welcome</h1>
                   </div>
+                 
                   <form id="form1" method="post">
+                
                     <div class="form-group">
                       <input type="text" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
