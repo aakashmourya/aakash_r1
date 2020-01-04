@@ -42,9 +42,9 @@
                             <a title="Edit Agent" href="<?php echo base_url($this->router->fetch_class()."/edit-agent/".base64_encode($row['user_id'])) ?>" class="btn btn-warning btn-sm">
                               <i class="fa fa-pencil"></i>
                             </a>
-                            <a title="Manage Contract" href="<?php echo base_url($this->router->fetch_class()."/edit-agent/".base64_encode($row['user_id'])) ?>" class="btn btn-info btn-sm">
+                            <!-- <a title="Manage Contract" href="<?php echo base_url($this->router->fetch_class()."/edit-agent/".base64_encode($row['user_id'])) ?>" class="btn btn-info btn-sm">
                             <i class="fas fa-file-contract"></i>
-                            </a>
+                            </a> -->
                           </td>
 
                         </tr>

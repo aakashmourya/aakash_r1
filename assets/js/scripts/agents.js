@@ -18,8 +18,8 @@ $(document).ready(function () {
     if ($.trim(name.val()) == "") {
       error = "Please enter Name";
       name.focus();
-    } else if ($.trim(phone.val()) == "") {
-      error = "Please enter phone";
+    } else if ($.trim(phone.val()) == ""  || !MOBILE_PATTERN.test(phone.val())) {
+      error = "Please enter valid phone no.";
       phone.focus();
     } else if ($.trim(email.val()) == "" || !EMAIL_PATTERN.test(email.val())) {
       error = "Please enter valid email";
@@ -60,11 +60,9 @@ $(document).ready(function () {
     // showAlertOnPage($("#form1"),content);return;
     let result = JSON.parse(content);
     if (result.success) {
-      // showAlert(result.message);
       showAlertOnPage($("#form1"), result.message);
       setTimeout(() => {
-        hideBtnProgress();
-        // window.location.replace(BASE_URL + "Users");
+        window.location.replace(USER_BASE_URL + "/show-agents");
       }, 1000);
 
     } else {

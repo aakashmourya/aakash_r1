@@ -75,11 +75,15 @@ class Users extends CI_Controller
 				echo json_encode(array('success' => false, 'message' => 'Email id already exists'));
 				die;
 			}
-
-			$checkExist = $this->MainModel->selectAllFromWhere("user_details", array("company_name" => $user_detail['company_name']));
-			if ($checkExist) {
-				echo json_encode(array('success' => false, 'message' => 'Company name already exists'));
-				die;
+			if ($user_detail['reg_type'] == REG_TYPE_COMPANY) {
+				$checkExist = $this->MainModel->selectAllFromWhere("user_details", array("company_name" => $user_detail['company_name']));
+				if ($checkExist) {
+					echo json_encode(array('success' => false, 'message' => 'Company name already exists'));
+					die;
+				}
+			}else{
+				$user_detail['company_name']="";
+				$user_detail['gst']="";
 			}
 
 			$user_detail['user_id'] = $user['user_id'] =	$this->MainModel->getNewIDorNo("users");
@@ -103,7 +107,7 @@ class Users extends CI_Controller
 	public function show_agents()
 	{
 		$data['agents'] = $this->UserModel->getAllUser($this->userDetail['user_id']);
-		$this->load_view('show_all_agents',$data);
+		$this->load_view('show_all_agents', $data);
 	}
 
 

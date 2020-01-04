@@ -23,7 +23,7 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider  my-0">
 
       <!-- Heading -->
       <!-- <div class="sidebar-heading">
