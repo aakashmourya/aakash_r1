@@ -26,9 +26,9 @@ function removeSpecialSymbol($string)
 function my_print($array = "")
 {
     var_dump($array);
-    echo "<pre>";
-    print_r($array);
-    echo "</pre>";
+    //echo "<pre>";
+   // print_r($array);
+   // echo "</pre>";
 }
 
 

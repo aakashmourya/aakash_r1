@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Users extends CI_Controller
 {
 	var $userDetail;
+	var $accessToken;
 	public function __construct()
 	{
 		parent::__construct();
@@ -11,13 +12,33 @@ class Users extends CI_Controller
 		$this->load->model('UserModel');
 		if (!isset($_SESSION['userInfo']))		   // On first entry re-direct to login screen
 		{
-			redirect('Login/index');
+			redirect('Login/');
 		} else {
-			$this->userDetail = $this->UserModel->getUserDetail($_SESSION['userInfo']['user_id'])[0];
-			// my_print($this->userDetail);
+			$this->accessToken = $_SESSION['userInfo']['token'];
+			$response = json_post(API_BASE_URL . 'get_user_details', [], get_token_header($this->accessToken));
+
+			if ($this->validate_response($response)) {
+					$this->userDetail = $response['result'];
+			} 
 		}
 	}
-
+	private function validate_response($response)
+	{
+		$isvalid=false;
+		if ($response) {
+			if (isset($response['error'])) {
+				$this->logout();
+			}
+			if ($response['success'] && !empty($response['result'])) {
+				$isvalid=true;
+			} else {
+				$this->logout();
+			}
+		} else {
+			$this->logout();
+		}
+		return $isvalid;
+	}
 	private function load_view($views = [], $vars = [], $scripts = [], $js_contants = [])
 	{
 		$vars['scripts'] = $scripts;
@@ -81,9 +102,9 @@ class Users extends CI_Controller
 					echo json_encode(array('success' => false, 'message' => 'Company name already exists'));
 					die;
 				}
-			}else{
-				$user_detail['company_name']="";
-				$user_detail['gst']="";
+			} else {
+				$user_detail['company_name'] = "";
+				$user_detail['gst'] = "";
 			}
 
 			$user_detail['user_id'] = $user['user_id'] =	$this->MainModel->getNewIDorNo("users");
