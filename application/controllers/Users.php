@@ -67,7 +67,7 @@ class Users extends CI_Controller
 			"REG_TYPE_COMPANY" => REG_TYPE_COMPANY,
 			"REG_TYPE_INDIVIDUAL" => REG_TYPE_INDIVIDUAL
 		);
-		$this->load_view('add_agent', $data, 'assets/js/scripts/agents.js', $js_contants);
+		$this->load_view('add_agent', $data, 'assets/js/scripts/user/agents.js', $js_contants);
 	}
 	public function save_agent()
 	{

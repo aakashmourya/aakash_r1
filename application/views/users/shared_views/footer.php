@@ -55,17 +55,17 @@
   <script src="<?php echo base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
 
   <!-- Page level custom scripts -->
-  
+
   <script src="<?php echo base_url('assets/js/datatables.js') ?>"></script>
   <?php
   //Load scripts bundle
   if (isset($scripts)) {
     if (is_array($scripts)) {
       foreach ($scripts as $src) {
-        echo "<script src='" . base_url($src) . "'></script>";
+        echo "<script src='" . base_url($src) . "?d=" . date("Ymdhis") . "'></script>";
       }
     } else {
-      echo "<script src='" . base_url($scripts) . "'></script>";
+      echo "<script src='" . base_url($scripts) . "?d=" . date("Ymdhis") . "'></script>";
     }
   }
   ?>

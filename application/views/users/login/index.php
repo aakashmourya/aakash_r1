@@ -59,4 +59,4 @@
     </div>
 
   </div>
-  <script src="<?php echo base_url("assets/js/scripts/login.js") ?>"></script>
+  <script src="<?php echo base_url("assets/js/scripts/user/login.js?d=".date("Ymdhis")) ?>"></script>
