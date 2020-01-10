@@ -85,3 +85,4 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 defined('API_BASE_URL')        OR define('API_BASE_URL','http://localhost:3030/api/v1/');
+defined('USER_SESSION_KEY')        OR define('USER_SESSION_KEY','NMC_Dist');

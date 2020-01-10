@@ -11,7 +11,7 @@
                 <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th hidden>#</th>
+                      <!-- <th hidden>#</th> -->
                       <th>Name</th>
                       <th>Phone</th>
                       <th>Email</th>
@@ -31,7 +31,7 @@
                     ?>
 
                         <tr>
-                          <td hidden><?php echo $row['id'] ?></td>
+                          <!-- <td hidden><?php //echo $row['id']; ?></td> -->
                           <td><?php echo $row['name'] ?></td>
                           <td><?php echo $row['mobile'] ?></td>
                           <td><?php echo $row['email'] ?></td>

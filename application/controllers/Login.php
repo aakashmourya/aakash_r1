@@ -7,7 +7,7 @@ class Login extends ci_controller
 
 		date_default_timezone_set("Asia/Kolkata");
 
-		if (isset($_SESSION['userInfo']) && !empty($_SESSION['userInfo'])) {
+		if (isset($_SESSION[USER_SESSION_KEY]) && !empty($_SESSION[USER_SESSION_KEY])) {
 			redirect('Users');
 		}
 	}
@@ -43,14 +43,14 @@ class Login extends ci_controller
 						if ($response['result']['user']['parent_id'] == 'root') {
 							$home_url = base_url("Users");
 						}
-						$this->session->set_userdata("userInfo", $response['result'], isset($_POST['rememberme']) ? true : false);
+						$this->session->set_userdata(USER_SESSION_KEY, $response['result'], isset($_POST['rememberme']) ? true : false);
 						echo json_encode(array('success' => true, 'message' => 'Login successfully', "home_url" => $home_url));
 					} else {
 						echo json_encode(array('success' => false, 'message' => $response['result']['message']));
 					}
 				}
 			} else {
-				echo json_encode(array('success' => false, 'message' => 'Something went wrong, Please contact service provider'));
+				echo json_encode(array('success' => false, 'message' => 'Server not respond. Please try later'));
 			}
 		} else {
 			echo json_encode(array('success' => false, 'message' => 'System error found, Please contact service provider'));
@@ -85,7 +85,7 @@ class Login extends ci_controller
 
 				if ($result) {
 					$final = $this->MainModel->selectAllFromWhere("users", array("user_id" => $insertData['user_id']));
-					$this->session->set_userdata("userInfo", $final[0]);
+					$this->session->set_userdata(USER_SESSION_KEY, $final[0]);
 					echo json_encode(array('success' => true, 'message' => 'Registered successfully'));
 				} else {
 					echo json_encode(array('success' => false, 'message' => 'Server error.'));

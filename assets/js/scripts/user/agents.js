@@ -18,7 +18,7 @@ $(document).ready(function () {
     if ($.trim(name.val()) == "") {
       error = "Please enter Name";
       name.focus();
-    } else if ($.trim(phone.val()) == ""  || !MOBILE_PATTERN.test(phone.val())) {
+    } else if ($.trim(phone.val()) == "" || !MOBILE_PATTERN.test(phone.val())) {
       error = "Please enter valid phone no.";
       phone.focus();
     } else if ($.trim(email.val()) == "" || !EMAIL_PATTERN.test(email.val())) {
@@ -49,25 +49,34 @@ $(document).ready(function () {
     }
     // return;
     let formData = new FormData(this);
-    let url = USER_BASE_URL + '/save-agent';
     showBtnProgress();
-    AjaxPost(formData, url, AjaxSuccess, AjaxError);
+    AjaxPost(formData, `${USER_BASE_URL}/${POST_ACTION}`, AjaxSuccess, AjaxError);
 
   });
 
   function AjaxSuccess(content) {
     //hideBtnProgress();
     // showAlertOnPage($("#form1"),content);return;
-    let result = JSON.parse(content);
-    if (result.success) {
-      showAlertOnPage($("#form1"), result.message);
-      setTimeout(() => {
-        window.location.replace(USER_BASE_URL + "/show-agents");
-      }, 1000);
+    try {
+      let result = JSON.parse(content);
+      if (result.message.code) {
+        if (result.message.code == 401) {
+          window.location.replace(USER_BASE_URL + "/logout");
+          return;
+        }
+      }
+      if (result.success) {
+        showAlertOnPage($("#form1"), result.message);
+        setTimeout(() => {
+          window.location.replace(USER_BASE_URL + "/show-agents");
+        }, 1000);
 
-    } else {
-      hideBtnProgress();
-      showAlertOnPage($("#form1"), result.message, 'danger');
+      } else {
+        hideBtnProgress();
+        showAlertOnPage($("#form1"), result.message, 'danger');
+      }
+    } catch (err) {
+      window.location.replace(USER_BASE_URL + "/logout");
     }
   }
 
