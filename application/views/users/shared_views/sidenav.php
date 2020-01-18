@@ -16,7 +16,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item <?php echo ($this->router->fetch_method()=='index')?"active":"";?>">
+      <li class="nav-item <?php echo ($CURRENT_METHOD=='index')?"active":"";?>">
         <a class="nav-link" href="<?php echo base_url($this->router->fetch_class()) ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -33,7 +33,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <?php 
       $agent_active=false;
-      if($this->router->fetch_method()=='add_agent'||$this->router->fetch_method()=='show_agents'){
+      if($CURRENT_METHOD=='add_agent' || $CURRENT_METHOD=='edit_agent' ||$CURRENT_METHOD=='show_agents'){
         $agent_active=true;
       }
       ?>
@@ -45,8 +45,8 @@
         <div id="collapseTwo" class="collapse <?php echo ($agent_active)?"show":"";?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage Agents</h6>
-            <a class="collapse-item <?php echo ($this->router->fetch_method()=='add_agent')?"active":"";?>" href="<?php echo base_url($this->router->fetch_class()."/add-agent") ?>"> <i class="fas fa-fw fa-user-plus"></i> Add</a>
-            <a class="collapse-item <?php echo ($this->router->fetch_method()=='show_agents')?"active":"";?>" href="<?php echo base_url($this->router->fetch_class()."/show-agents") ?>"> <i class="fas fa-fw fa-list"></i> Show All</a>
+            <a class="collapse-item <?php echo ($CURRENT_METHOD=='add_agent')?"active":"";?>" href="<?php echo base_url($this->router->fetch_class()."/add-agent") ?>"> <i class="fas fa-fw fa-user-plus"></i> Add</a>
+            <a class="collapse-item <?php echo ($CURRENT_METHOD=='show_agents')?"active":"";?>" href="<?php echo base_url($this->router->fetch_class()."/show-agents") ?>"> <i class="fas fa-fw fa-list"></i> Show All</a>
           </div>
         </div>
       </li>

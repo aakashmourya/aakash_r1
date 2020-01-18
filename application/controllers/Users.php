@@ -50,6 +50,7 @@ class Users extends CI_Controller
 	{
 		$vars['scripts'] = $scripts;
 		$vars['js_contants'] = $js_contants;
+		$vars['CURRENT_METHOD']=$this->router->fetch_method();
 		$this->load->view('users/shared_views/header.php', $vars);
 		$this->load->view('users/shared_views/sidenav.php', $vars);
 		if (is_array($views)) {
@@ -85,6 +86,40 @@ class Users extends CI_Controller
 			$this->load_view('add_agent', $data, 'assets/js/scripts/user/agents.js', $js_contants);
 		}
 	}
+	public function save_agent()
+	{
+		if (isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])) {
+
+			$data = array(
+				'password' => validateInput($_POST['password']),
+				'email' => validateInput($_POST['email']),
+				'name' => validateInput($_POST['name']),
+				'company_name' => validateInput($_POST['company_name']),
+				'mobile' => validateInput($_POST['phone']),
+				'address' => validateInput($_POST['address']),
+				'gst' => validateInput($_POST['gst']),
+				'reg_type' => validateInput($_POST['reg_type']),
+			);
+			if ($data['reg_type'] != REG_TYPE_COMPANY) {
+				$data['company_name'] = "n/a";
+				$data['gst'] = "n/a";
+			}
+			$response = json_post(API_BASE_URL . 'add_user', $data, get_token_header($this->accessToken));
+
+			if ($this->validate_response($response, false)) {
+				if ($response['success']) {
+					echo json_encode(array('success' => true, 'message' => $response['result']['message']));
+				} else {
+					echo json_encode(array('success' => false, 'message' => $response['result']['message']));
+				}
+			} else {
+				echo json_encode(array('success' => false, 'message' => $response['error']));
+			}
+		} else {
+			echo json_encode(array('success' => false, 'message' => 'Insufficient details sent, Please contact admin.'));
+		}
+		exit();
+	}
 	public function edit_agent($user_id = null)
 	{
 		if ($user_id == null) {
@@ -113,11 +148,12 @@ class Users extends CI_Controller
 			$this->load_view('add_agent', $data, 'assets/js/scripts/user/agents.js', $js_contants);
 		}
 	}
-	public function save_agent()
+	public function update_agent()
 	{
-		if (isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])) {
+		if (isset($_POST['user_id'])&&isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])) {
 
 			$data = array(
+				'user_id' => base64_decode($_POST['user_id']),
 				'password' => validateInput($_POST['password']),
 				'email' => validateInput($_POST['email']),
 				'name' => validateInput($_POST['name']),
@@ -131,7 +167,7 @@ class Users extends CI_Controller
 				$data['company_name'] = "n/a";
 				$data['gst'] = "n/a";
 			}
-			$response = json_post(API_BASE_URL . 'add_user', $data, get_token_header($this->accessToken));
+			$response = json_post(API_BASE_URL . 'edit_user', $data, get_token_header($this->accessToken));
 
 			if ($this->validate_response($response, false)) {
 				if ($response['success']) {

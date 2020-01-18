@@ -73,7 +73,12 @@ $(document).ready(function () {
 
       } else {
         hideBtnProgress();
+        if (result.message.code) {
+          showAlertOnPage($("#form1"), result.message.message, 'danger');
+        }
+        else{
         showAlertOnPage($("#form1"), result.message, 'danger');
+        }
       }
     } catch (err) {
       window.location.replace(USER_BASE_URL + "/logout");
