@@ -4,7 +4,7 @@
   <footer class="sticky-footer bg-white">
     <div class="container my-auto">
       <div class="copyright text-center my-auto">
-        <span>Copyright &copy; Know Your Gene <?php echo date('Y')?></span>
+        <span>Copyright &copy; Know Your Gene <?php echo date('Y') ?></span>
       </div>
     </div>
   </footer>
@@ -45,7 +45,7 @@
 
   <!-- Core plugin JavaScript-->
   <script src="<?php echo base_url('assets/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
   <!-- Custom scripts for all pages-->
   <script src="<?php echo base_url('assets/js/sb-admin-2.min.js') ?>"></script>
 
@@ -57,7 +57,31 @@
   <!-- Page level custom scripts -->
 
   <script src="<?php echo base_url('assets/js/datatables.js') ?>"></script>
-  <?php
+  <script src="<?php echo base_url('assets/js/datepicker.js') ?>"></script>
+   <?php
+  //Load Ajax DATA
+  if (isset($load_data_ajax)) {
+    if (is_array($load_data_ajax)) {
+      echo "<script>
+      let JS_ViewData={};
+      ";
+       echo "$(document).ready(function () {";
+      foreach ($load_data_ajax as $data) {
+        echo "AjaxPost(new FormData(), `".$data['url']."`, AjaxSuccess, AjaxError,'".$data['var_name']."');";
+      }
+      echo "function AjaxSuccess(content,varname) {
+        let result = JSON.parse(content);
+        if (result.error) {
+        } else if (result.success) {
+          JS_ViewData[varname] = result.result;
+        }
+    }
+  });
+  </script>";
+    }
+  }
+  ?>
+   <?php
   //Load scripts bundle
   if (isset($scripts)) {
     if (is_array($scripts)) {

@@ -32,16 +32,17 @@ class Login extends ci_controller
 				'password' => $password
 			);
 
-			$response = json_post(API_BASE_URL . 'login', $data);
+			$response = json_post(API_BASE_URL . 'user/login', $data);
 
 			if ($response) {
 				if (isset($response['error'])) {
 					echo json_encode(array('success' => false, 'message' => $response['error']['message']));
 				} else {
 					if ($response['success']) {
-						$home_url = base_url("Users");
+						$return_url=isset($_GET['return_url'])?$_GET['return_url']:"";
+						$home_url = ($return_url=="")?base_url("Users"):$return_url;
 						if ($response['result']['user']['parent_id'] == 'root') {
-							$home_url = base_url("Users");
+							$home_url = ($return_url=="")?base_url("Users"):$return_url;
 						}
 						$this->session->set_userdata(USER_SESSION_KEY, $response['result'], isset($_POST['rememberme']) ? true : false);
 						echo json_encode(array('success' => true, 'message' => 'Login successfully', "home_url" => $home_url));

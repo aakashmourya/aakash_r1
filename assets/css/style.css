@@ -17,3 +17,8 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
     padding: .01rem .3rem;
     font-size: .8rem;
 }
+
+.add-test-table thead tr:first-child{
+   background-color: var(--dark);
+   color: white;
+}

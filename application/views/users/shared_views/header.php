@@ -20,7 +20,8 @@
   <link href="<?php echo base_url('assets/css/sb-admin-2.min.css') ?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/vendor/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/css/style.css') ?>" rel="stylesheet">
-
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  
   <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/plugins/bootstrap-notify/bootstrap-notify.min.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('assets/js/helper.js'); ?>"></script>

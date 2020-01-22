@@ -22,7 +22,12 @@ $(document).ready(function () {
     }
 
     let formData = new FormData(this);
-    let url = BASE_URL + 'Login/validate';
+    query_string="";
+    if(window.location.href.indexOf('?')!=-1){
+      query_string= window.location.href.slice(window.location.href.indexOf('?'))
+    }
+    
+    let url = BASE_URL + 'Login/validate'+query_string;
     showBtnProgress();
     AjaxPost(formData, url, AjaxSuccess, AjaxError);
 

@@ -33,7 +33,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <?php 
       $agent_active=false;
-      if($CURRENT_METHOD=='add_agent' || $CURRENT_METHOD=='edit_agent' ||$CURRENT_METHOD=='show_agents'){
+      if($CURRENT_METHOD=='add_agent' || $CURRENT_METHOD=='edit_agent' ||$CURRENT_METHOD=='show_agents'||$CURRENT_METHOD=='contract'){
         $agent_active=true;
       }
       ?>
@@ -47,6 +47,10 @@
             <h6 class="collapse-header">Manage Agents</h6>
             <a class="collapse-item <?php echo ($CURRENT_METHOD=='add_agent')?"active":"";?>" href="<?php echo base_url($this->router->fetch_class()."/add-agent") ?>"> <i class="fas fa-fw fa-user-plus"></i> Add</a>
             <a class="collapse-item <?php echo ($CURRENT_METHOD=='show_agents')?"active":"";?>" href="<?php echo base_url($this->router->fetch_class()."/show-agents") ?>"> <i class="fas fa-fw fa-list"></i> Show All</a>
+
+            <h6 class="collapse-header">Manage Contracts</h6>
+            <a class="collapse-item <?php echo ($CURRENT_METHOD=='contract')?"active":"";?>" href="<?php echo base_url($this->router->fetch_class()."/contract") ?>"><i class="fas fa-file-signature"></i> Contract</a>
+          
           </div>
         </div>
       </li>
