@@ -50,7 +50,7 @@ $(document).ready(function () {
     // return;
     let formData = new FormData(this);
     showBtnProgress();
-    AjaxPost(formData, `${USER_BASE_URL}/${POST_ACTION}`, AjaxSuccess, AjaxError);
+    AjaxPost(formData, `${USER_BASE_URL}/${FORM_ACTION}`, AjaxSuccess, AjaxError);
 
   });
 

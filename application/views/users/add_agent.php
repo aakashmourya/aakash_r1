@@ -8,7 +8,7 @@
     </div>
     <div class="card-body">
 
-      <form id="form1" method="post">
+      <form id="form1" method="post" >
         <?php if ($isEditForm) {
         ?>
           <input type="hidden" class="form-control" value="<?php if (isset($user_detail['user_id'])) {

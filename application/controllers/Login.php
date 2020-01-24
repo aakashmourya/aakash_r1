@@ -32,7 +32,7 @@ class Login extends ci_controller
 				'password' => $password
 			);
 
-			$response = json_post(API_BASE_URL . 'user/login', $data);
+			$response = api_post(API_BASE_URL . 'user/login', $data);
 
 			if ($response) {
 				if (isset($response['error'])) {
@@ -99,4 +99,5 @@ class Login extends ci_controller
 		}
 		exit();
 	}
+	
 }

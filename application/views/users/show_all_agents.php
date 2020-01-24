@@ -18,6 +18,7 @@
                       <th>Reg. Type</th>
                       <th>Company Name</th>
                       <th>GST</th>
+                      <th>Ref. Code</th>
                       <th>Actions</th>
 
                     </tr>
@@ -38,6 +39,7 @@
                           <td><?php echo ucwords($row['reg_type']) ?></td>
                           <td><?php echo $row['company_name'] ?></td>
                           <td><?php echo $row['gst'] ?></td>
+                          <td><?php echo $row['ref_code'] ?></td>
                           <td>
                             <a title="Edit Agent" href="<?php echo base_url($this->router->fetch_class()."/edit-agent/".base64_encode($row['user_id'])) ?>" class="btn btn-warning btn-sm">
                               <i class="fa fa-pencil"></i>

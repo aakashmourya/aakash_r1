@@ -1,5 +1,75 @@
 $(document).ready(function () {
 
+    $("#form1").submit(function (e) {
+        e.preventDefault();
+        let user_id = $("[name=user_id]");
+        let from_date = $("[name=from_date]");
+        let to_date = $("[name=to_date]");
+        let file = $("[name=file]");
+        
+        let error = "";
+    
+        if ($.trim(from_date.val()) == "") {
+          error = "Please enter from date";
+          from_date.focus();
+        } else  if ($.trim(to_date.val()) == "") {
+            error = "Please enter to date";
+            to_date.focus();
+          }
+        else if ($.trim(file.val()) == "") {
+            error = "Please select document";
+            file.focus();
+          } else if (selectedTestList.length<=0) {
+            error = "Please select tests.";
+            $('#testsSelect').focus();
+          }
+      
+       
+    
+        if (error != "") {
+          showAlert(error, 'danger');
+          return;
+        }
+         //return;
+        let formData = new FormData(this);
+        formData.append('tests',JSON.stringify(selectedTestList));
+        showBtnProgress();
+        console.log(formData);
+       AjaxPost(formData, `${USER_BASE_URL}/${"save_contract"}`, AjaxSuccess, AjaxError);
+    
+      });
+      function AjaxSuccess(content) {
+        //hideBtnProgress();
+        // showAlertOnPage($("#form1"),content);return;
+        try {
+          let result = JSON.parse(content);
+          if (result.message.code) {
+            if (result.message.code == 401) {
+             // window.location.replace(USER_BASE_URL + "/logout");
+              return;
+            }
+          }
+          if (result.success) {
+            showAlertOnPage($("#form1"), result.message);
+            setTimeout(() => {
+             // window.location.replace(USER_BASE_URL + "/show-agents");
+            }, 1000);
+    
+          } else {
+            hideBtnProgress();
+            if (result.message.code) {
+              showAlertOnPage($("#form1"), result.message.message, 'danger');
+            }
+            else{
+            showAlertOnPage($("#form1"), result.message, 'danger');
+            }
+          }
+        } catch (err) {
+         // window.location.replace(USER_BASE_URL + "/logout");
+        }
+      }
+    
+
     ///////////////////////////////////////////////////////////////
     let setectedTestTable = $('#setectedTestTable');
     let selectedTestList = [];
@@ -14,6 +84,7 @@ $(document).ready(function () {
         let ob = {
             test_id: testsSelect.val(),
             test_name: selectedOption.text(),
+            test_mrp:selectedOption.data('mrp')
         };
         selectedTestList.push(ob);
         loadTable(selectedTestList);
@@ -55,8 +126,8 @@ $(document).ready(function () {
             packageSelect.change(package_onchange);
 
             var removeBtn = rowTemplate.find('.list-remove-btn');
-            removeBtn.data("test", list[i].test_id);
-            removeBtn.data("testName", list[i].test_name);
+            removeBtn.data("test", list[i]);
+          
             removeBtn.click(removeBtn_click);
 
             setectedTestTable.append(rowTemplate);
@@ -74,15 +145,14 @@ $(document).ready(function () {
     }
     function removeBtn_click() {
         let btn = $(this);
-        let test_id = btn.data('test');
-        let test_name = btn.data('testName');
+        let test = btn.data('test');
 
-        let itemIndex = selectedTestList.findIndex((item) => item.test_id == test_id);
+        let itemIndex = selectedTestList.findIndex((item) => item.test_id == test.test_id);
 
         selectedTestList.splice(itemIndex, 1);
         loadTable(selectedTestList);
 
-        let option = `<option value="${test_id}">${test_name}</option>`;
+        let option = `<option data-mrp="${test.test_mrp}" value="${test.test_id}">${test.test_name}</option>`;
         let testsSelect = $('#testsSelect');
         testsSelect.append(option);
     }
