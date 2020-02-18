@@ -61,7 +61,7 @@ $(document).ready(function () {
       let result = JSON.parse(content);
       if (result.message.code) {
         if (result.message.code == 401) {
-          window.location.replace(USER_BASE_URL + "/logout");
+          //window.location.replace(USER_BASE_URL + "/logout");
           return;
         }
       }
@@ -81,7 +81,7 @@ $(document).ready(function () {
         }
       }
     } catch (err) {
-      window.location.replace(USER_BASE_URL + "/logout");
+     // window.location.replace(USER_BASE_URL + "/logout");
     }
   }
 

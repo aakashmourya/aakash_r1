@@ -92,10 +92,28 @@
                                                                         echo $user_detail['address'];
                                                                       } ?></textarea>
           </div>
+          </div>
+          <h4>Referred by</h4>
+        <div class="form-group row">
+        <div class="col-sm-6">
+            Referred by (Reference Code)
+            <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($user_detail['ref_code'])) {
+                                                                                            echo $user_detail['ref_code'];
+                                                                                          } ?>" name="ref_code">
+          </div>
+          <div class="col-sm-6">
+            Percentage (%)
+            <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($user_detail['ref_code'])) {
+                                                                                            echo $user_detail['ref_code'];
+                                                                                          } ?>" name="percentage">
+          </div>
           <div class="col-sm-12" style="text-align: center;">
             <button type="submit" id="btn" class="btn btn-<?php echo !$isEditForm ? "primary" : "warning"; ?>"> <i class="<?php echo !$isEditForm ? "fas fa-fw fa-user-plus" : "fa fa-pencil"; ?>"></i> <?php echo !$isEditForm ? "Add" : "Update"; ?></button>
           </div>
         </div>
+
+        
+      
 
 
 

@@ -41,7 +41,7 @@ class Login extends ci_controller
 					if ($response['success']) {
 						$return_url=isset($_GET['return_url'])?$_GET['return_url']:"";
 						$home_url = ($return_url=="")?base_url("Users"):$return_url;
-						if ($response['result']['user']['parent_id'] == 'root') {
+						if ($response['result']['user']['added_by'] == 'root') {
 							$home_url = ($return_url=="")?base_url("Users"):$return_url;
 						}
 						$this->session->set_userdata(USER_SESSION_KEY, $response['result'], isset($_POST['rememberme']) ? true : false);

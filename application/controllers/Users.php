@@ -92,7 +92,8 @@ class Users extends CI_Controller
 	}
 	public function save_agent()
 	{
-		if (isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])) {
+		//my_print($_POST);
+		if (isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])&& isset($_POST['ref_code'])&& isset($_POST['percentage'])) {
 
 			$data = array(
 				'password' => validateInput($_POST['password']),
@@ -103,10 +104,15 @@ class Users extends CI_Controller
 				'address' => validateInput($_POST['address']),
 				'gst' => validateInput($_POST['gst']),
 				'reg_type' => validateInput($_POST['reg_type']),
+				
 			);
 			if ($data['reg_type'] != REG_TYPE_COMPANY) {
 				$data['company_name'] = "n/a";
 				$data['gst'] = "n/a";
+			}
+			if (validateInput($_POST['ref_code'])!="" && validateInput($_POST['percentage'])!="") {
+				$data['referred_by'] = validateInput($_POST['ref_code']);
+				$data['percentage'] = validateInput($_POST['percentage']);
 			}
 			$response = api_post(API_BASE_URL . 'user/add_user', $data, get_token_header($this->accessToken));
 
