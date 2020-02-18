@@ -62,22 +62,12 @@
   //Load Ajax DATA
   if (isset($load_data_ajax)) {
     if (is_array($load_data_ajax)) {
-      echo "<script>
-      let JS_ViewData={};
-      ";
+      echo "<script>let JS_ViewData={};";
        echo "$(document).ready(function () {";
       foreach ($load_data_ajax as $data) {
         echo "AjaxPost(new FormData(), `".$data['url']."`, AjaxSuccess, AjaxError,'".$data['var_name']."');";
       }
-      echo "function AjaxSuccess(content,varname) {
-        let result = JSON.parse(content);
-        if (result.error) {
-        } else if (result.success) {
-          JS_ViewData[varname] = result.result;
-        }
-    }
-  });
-  </script>";
+      echo "function AjaxSuccess(content,varname) {let result = JSON.parse(content);if (result.error) {} else if (result.success) {JS_ViewData[varname] = result.result;}}});</script>";
     }
   }
   ?>
