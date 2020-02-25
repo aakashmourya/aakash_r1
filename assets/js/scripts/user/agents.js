@@ -81,7 +81,7 @@ $(document).ready(function () {
         }
       }
     } catch (err) {
-     // window.location.replace(USER_BASE_URL + "/logout");
+      window.location.replace(USER_BASE_URL + "/logout");
     }
   }
 

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Users extends CI_Controller
+class User extends CI_Controller
 {
 
 	var $userDetail;
@@ -49,12 +49,9 @@ class Users extends CI_Controller
 	}
 	private function load_view($views = [], $vars = [], $scripts = [], $js_contants = [], $load_data_ajax = [])
 	{
-		//$this->session->set_userdata('return_url', base_url($this->router->fetch_class().'/'.$this->router->fetch_method()));
-		set_cookie('return_url', base_url($this->router->fetch_class() . '/' . $this->router->fetch_method()), '3600');
-		$vars['scripts'] = $scripts;
-		$vars['js_contants'] = $js_contants;
-		$vars['load_data_ajax'] = $load_data_ajax;
-		$vars['CURRENT_METHOD'] = $this->router->fetch_method();
+		$view_data=init_view_data($scripts,$js_contants,$load_data_ajax);
+		$vars=array_merge($view_data,$vars);
+
 		$this->load->view('users/shared_views/header.php', $vars);
 		$this->load->view('users/shared_views/sidenav.php', $vars);
 		if (is_array($views)) {

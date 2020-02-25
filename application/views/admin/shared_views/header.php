@@ -32,6 +32,15 @@
   init_js_constants($js_contants);
   ?>
 
+  <!-- theme colors -->
+<style>
+  :root {
+    --primary: #4f1ac3;
+    --primary-hover: #350d8c;
+    --primary-gradient: #7250bd;
+    --form-control-focus: #4f1ac36b;
+    }
+</style>
 </head>
 
 <body id="page-top">
