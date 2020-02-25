@@ -84,7 +84,7 @@ class Admin extends CI_Controller
 				"FORM_ACTION" => 'save_agent'
 			);
 
-			$this->load_view('add_agent', $data, 'assets/js/scripts/user/agents.js', $js_contants);
+			$this->load_view('add_agent', $data, 'assets/scripts/admin/agents.js', $js_contants);
 		}
 	}
 	public function save_agent()
@@ -152,7 +152,7 @@ class Admin extends CI_Controller
 				"FORM_ACTION" => 'update_agent'
 			);
 
-			$this->load_view('add_agent', $data, 'assets/js/scripts/user/agents.js', $js_contants);
+			$this->load_view('add_agent', $data, 'assets/scripts/admin/agents.js', $js_contants);
 		}
 	}
 	public function update_agent()
@@ -224,7 +224,7 @@ class Admin extends CI_Controller
 				"url" => base_url($this->router->fetch_class() . '/get_packages')
 			)
 		);
-		$this->load_view('contract', $data, 'assets/js/scripts/user/contract.js', [], $load_data_ajax);
+		$this->load_view('contract', $data, 'assets/scripts/admin/contract.js', [], $load_data_ajax);
 	}
 	public function save_contract()
 	{

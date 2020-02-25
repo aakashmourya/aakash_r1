@@ -20,8 +20,8 @@
  <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
   <!-- Bootstrap Notify -->
 <script type="text/javascript" src="<?php echo base_url('assets/plugins/bootstrap-notify/bootstrap-notify.min.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/helper.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/constants.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/scripts/helpers/helper.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/scripts/helpers/constants.js'); ?>"></script>
 <script>
 const BASE_URL="<?php echo base_url()?>";
 </script>
