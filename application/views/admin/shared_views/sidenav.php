@@ -9,7 +9,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-dna"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Know Your Gene</div>
+        <div class="sidebar-brand-text mx-3">Know Your Gene (Admin)</div>
       </a>
 
       <!-- Divider -->

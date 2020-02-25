@@ -37,7 +37,7 @@
         $agent_active=true;
       }
       ?>
-      <li class="nav-item <?php echo ($agent_active)?"active":"";?>">
+      <!-- <li class="nav-item <?php echo ($agent_active)?"active":"";?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-users"></i>
           <span>Agents</span>
@@ -53,7 +53,7 @@
           
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
