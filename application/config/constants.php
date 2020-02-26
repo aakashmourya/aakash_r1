@@ -84,7 +84,7 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-defined('API_BASE_URL')        OR define('API_BASE_URL','http://localhost:3030/api/v1/');
+defined('API_BASE_URL')        OR define('API_BASE_URL','http://192.168.1.10:3030/api/v1/');
 
 defined('ADMIN_SESSION_KEY')        OR define('ADMIN_SESSION_KEY','NMC_Dist_Admin');
 defined('USER_SESSION_KEY')        OR define('USER_SESSION_KEY','NMC_Dist_User');

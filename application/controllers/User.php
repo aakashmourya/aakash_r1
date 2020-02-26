@@ -49,8 +49,8 @@ class User extends CI_Controller
 	}
 	private function load_view($views = [], $vars = [], $scripts = [], $js_contants = [], $load_data_ajax = [])
 	{
-		$view_data=init_view_data($scripts,$js_contants,$load_data_ajax);
-		$vars=array_merge($view_data,$vars);
+		$view_data = init_view_data($scripts, $js_contants, $load_data_ajax);
+		$vars = array_merge($view_data, $vars);
 
 		$this->load->view('users/shared_views/header.php', $vars);
 		$this->load->view('users/shared_views/sidenav.php', $vars);
@@ -66,6 +66,7 @@ class User extends CI_Controller
 
 	public function index()
 	{
+		
 		$this->load_view('dashboard/index');
 	}
 
@@ -90,7 +91,7 @@ class User extends CI_Controller
 	public function save_agent()
 	{
 		//my_print($_POST);
-		if (isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])&& isset($_POST['ref_code'])&& isset($_POST['percentage'])) {
+		if (isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address']) && isset($_POST['ref_code']) && isset($_POST['percentage'])) {
 
 			$data = array(
 				'password' => validateInput($_POST['password']),
@@ -101,13 +102,13 @@ class User extends CI_Controller
 				'address' => validateInput($_POST['address']),
 				'gst' => validateInput($_POST['gst']),
 				'reg_type' => validateInput($_POST['reg_type']),
-				
+
 			);
 			if ($data['reg_type'] != REG_TYPE_COMPANY) {
 				$data['company_name'] = "n/a";
 				$data['gst'] = "n/a";
 			}
-			if (validateInput($_POST['ref_code'])!="" && validateInput($_POST['percentage'])!="") {
+			if (validateInput($_POST['ref_code']) != "" && validateInput($_POST['percentage']) != "") {
 				$data['referred_by'] = validateInput($_POST['ref_code']);
 				$data['percentage'] = validateInput($_POST['percentage']);
 			}
@@ -230,13 +231,13 @@ class User extends CI_Controller
 	{
 		// print_r($_FILES);
 		// exit();
-		if (isset($_POST['user_id']) && isset($_POST['ref_code'])&&isset($_POST['percentage']) &&  isset($_POST['from_date']) && isset($_POST['to_date']) && isset($_FILES['file']['name']) && isset($_POST['tests'])) {
+		if (isset($_POST['user_id']) && isset($_POST['ref_code']) && isset($_POST['percentage']) &&  isset($_POST['from_date']) && isset($_POST['to_date']) && isset($_FILES['file']['name']) && isset($_POST['tests'])) {
 
 			$data = array(
 				'user_id' => validateInput(base64_decode($_POST['user_id'])),
 				'ref_code' => validateInput($_POST['ref_code']),
 				'ref_percentage' => validateInput($_POST['percentage']),
-				'from_date' =>date_format(date_create_from_format('d/m/Y', validateInput($_POST['from_date'])), 'Y-m-d'),
+				'from_date' => date_format(date_create_from_format('d/m/Y', validateInput($_POST['from_date'])), 'Y-m-d'),
 				'to_date' => date_format(date_create_from_format('d/m/Y', validateInput($_POST['to_date'])), 'Y-m-d'),
 				'tests' => $_POST['tests'],
 				'doc_file' => new CURLFILE($_FILES['file']['tmp_name'], $_FILES['file']['type'], $_FILES['file']['name'])

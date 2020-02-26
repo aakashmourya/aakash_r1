@@ -3,15 +3,15 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <h1 class="h3 mb-0 text-gray-800">Profile</h1>
+            <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
           <!-- Content Row -->
-          <div class="row">
+          <!-- <div class="row"> -->
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+          <!-- Earnings (Monthly) Card Example -->
+          <!-- <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -25,10 +25,10 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+          <!-- Earnings (Monthly) Card Example -->
+          <!-- <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -42,10 +42,10 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+          <!-- Earnings (Monthly) Card Example -->
+          <!-- <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -68,10 +68,10 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+          <!-- Pending Requests Card Example -->
+          <!-- <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -85,18 +85,77 @@
                   </div>
                 </div>
               </div>
+            </div> -->
+          <!-- </div> -->
+
+          <!-- Content Row -->
+
+
+
+          <!-- Content Row -->
+
+          <div class="row">
+            <!-- show image with name -->
+            <!-- <div class="card shadow mb-4 col-sm-2 img_card">
+              <div class="card-body profile_card">
+                <img class="img-profile rounded-circle profile_img" src="<?php echo base_url('assets/img/avatar5.png') ?>">
+                <div>
+                  <p class="u_name">Hello Yathath Sharma</p>
+                </div>
+              </div>
+            </div> -->
+            <!-- personal details tab -->
+            <div class="col-sm-6">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h5 class="m-0 font-weight-bold text-primary">Personal Details</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <!-- <div class="offset-1 col-sm-5 text-primary">Registration Type :</div>
+                    <div class="col-sm-6">Individual</div> -->
+                    <div class="col-sm-4 text-primary">Name :</div>
+                    <div class="col-sm-8">Yatharth Sharma</div>
+                    <div class="col-sm-4 text-primary">Company Name :</div>
+                    <div class="col-sm-8">Gennextit</div>
+                    <!-- <div class="offset-1 col-sm-5 text-primary">GST No :</div>
+                    <div class="col-sm-6">YS012345</div> -->
+                    <div class="col-sm-4 text-primary">Phone :</div>
+                    <div class="col-sm-8">0987654321</div>
+                    <div class="col-sm-4 text-primary">Email :</div>
+                    <div class="col-sm-8">yatharth.sharma@gennextit.com</div>
+                    <div class="col-sm-4 text-primary">Address :</div>
+                    <div class="col-sm-8">G4,Panchsheel Colony,Bhopura,Ghaziabad (U.P.),2010005</div>
+                    <!-- <div class="offset-1 col-sm-5 text-primary">Referred by :</div>
+                    <div class="col-sm-6">Aakash Maurya</div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           
+            
+
+            <!-- reffered by and other details -->
+            <div class="col-sm-6">
+              <div class="card shadow mb-4" style="min-height:92%">
+                <div class="card-header py-3">
+                  <h5 class="m-0 font-weight-bold text-primary">Reffered By & Other Details</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-4 text-primary">Registration Type :</div>
+                    <div class="col-sm-8">Individual</div>
+                    <div class="col-sm-4 text-primary">GST No :</div>
+                    <div class="col-sm-8">YS012345</div>
+                    <div class="col-sm-4 text-primary">Referred by :</div>
+                    <div class="col-sm-8">Aakash Maurya</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Content Row -->
-
-        
-
-          <!-- Content Row -->
-          <div class="row">
-
-         
-          </div>
 
         </div>
         <!-- /.container-fluid -->

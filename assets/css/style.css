@@ -22,3 +22,22 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
    background-color: var(--dark);
    color: white;
 }
+
+.profile_img{
+    width:70%;
+}
+
+.u_name{
+    font-size:12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.profile_card{    
+    height: 100%;
+    text-align: center;
+}
+
+.img_card{
+    height: 100%;
+}
