@@ -11,7 +11,8 @@ $(document).ready(function () {
     let email = $("[name=email]");
     let password = $("[name=password]");
     let address = $("[name=address]");
-
+let referred_by= $("[name=referred_by]");
+let percentage= $("[name=percentage]");
 
     let error = "";
 
@@ -42,6 +43,12 @@ $(document).ready(function () {
         gst.focus();
       }
     }
+
+    if ($.trim(referred_by.val()) != "" && $.trim(percentage.val()) == "") {
+      error = "Please enter percentage";
+      percentage.focus();
+    }
+
 
     if (error != "") {
       showAlert(error, 'danger');

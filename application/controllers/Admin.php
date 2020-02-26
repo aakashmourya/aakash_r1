@@ -22,6 +22,9 @@ class Admin extends CI_Controller
 			$response = api_post(API_BASE_URL . 'user/get_user_details', ['user_id' => $_SESSION[ADMIN_SESSION_KEY]['user']['user_id']], get_token_header($this->accessToken));
 
 			if ($this->validate_response($response)) {
+				if (empty($response['result'])) {
+					$this->logout();
+				}
 				$this->userDetail = $response['result'];
 			}
 		}
@@ -90,7 +93,7 @@ class Admin extends CI_Controller
 	public function save_agent()
 	{
 		//my_print($_POST);
-		if (isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])&& isset($_POST['ref_code'])&& isset($_POST['percentage'])) {
+		if (isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])&& isset($_POST['referred_by'])&& isset($_POST['percentage'])) {
 
 			$data = array(
 				'password' => validateInput($_POST['password']),
@@ -107,8 +110,8 @@ class Admin extends CI_Controller
 				$data['company_name'] = "n/a";
 				$data['gst'] = "n/a";
 			}
-			if (validateInput($_POST['ref_code'])!="" && validateInput($_POST['percentage'])!="") {
-				$data['referred_by'] = validateInput($_POST['ref_code']);
+			if (validateInput($_POST['referred_by'])!="" && validateInput($_POST['percentage'])!="") {
+				$data['referred_by'] = validateInput($_POST['referred_by']);
 				$data['percentage'] = validateInput($_POST['percentage']);
 			}
 			$response = api_post(API_BASE_URL . 'user/add_user', $data, get_token_header($this->accessToken));
@@ -157,7 +160,7 @@ class Admin extends CI_Controller
 	}
 	public function update_agent()
 	{
-		if (isset($_POST['user_id']) && isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])) {
+		if (isset($_POST['user_id']) && isset($_POST['reg_type']) && isset($_POST['agent_type']) && isset($_POST['name']) && isset($_POST['company_name']) && isset($_POST['gst']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])&& isset($_POST['referred_by'])&& isset($_POST['percentage'])) {
 
 			$data = array(
 				'user_id' => base64_decode($_POST['user_id']),
@@ -174,6 +177,12 @@ class Admin extends CI_Controller
 				$data['company_name'] = "n/a";
 				$data['gst'] = "n/a";
 			}
+
+			if (validateInput($_POST['referred_by'])!="" && validateInput($_POST['percentage'])!="") {
+				$data['referred_by'] = validateInput($_POST['referred_by']);
+				$data['percentage'] = validateInput($_POST['percentage']);
+			}
+
 			$response = api_post(API_BASE_URL . 'user/edit_user', $data, get_token_header($this->accessToken));
 
 			if ($this->validate_response($response, false)) {
@@ -192,7 +201,8 @@ class Admin extends CI_Controller
 	}
 	public function show_agents()
 	{
-		$response = api_post(API_BASE_URL . 'user/get_all_users', ['user_id' => $this->userDetail['user_id']], get_token_header($this->accessToken));
+	// my_print($this->userDetail);
+		$response = api_post(API_BASE_URL . 'user/get_all_users', ['user_id' => $this->userDetail['user_id'],'ref_code' => $this->userDetail['ref_code']], get_token_header($this->accessToken));
 		$data['agents'] = [];
 		if ($this->validate_response($response)) {
 			if ($response['success']) {
@@ -206,7 +216,7 @@ class Admin extends CI_Controller
 	{
 
 		$tests_response = api_post(API_BASE_URL . 'test/get_tests', [], get_token_header($this->accessToken));
-		$agents_response = api_post(API_BASE_URL . 'user/get_all_users', ['user_id' => $this->userDetail['user_id']], get_token_header($this->accessToken));
+		$agents_response = api_post(API_BASE_URL . 'user/get_all_users', ['user_id' => $this->userDetail['user_id'],'ref_code' => $this->userDetail['ref_code']], get_token_header($this->accessToken));
 
 		$data['tests'] = [];
 		$data['agents'] = [];

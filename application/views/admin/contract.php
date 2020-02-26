@@ -24,7 +24,7 @@
               <?php
               foreach ($agents as $value) {
               ?>
-                <option value="<?php echo base64_encode($value['user_id']) ?>"><?php echo ucwords($value['name']) ?></option>
+                <option value="<?php echo base64_encode($value['user_id']) ?>"><?php echo ucwords($value['name']) ?> (<?php echo $value['ref_code'] ?>)</option>
               <?php
               }
               ?>

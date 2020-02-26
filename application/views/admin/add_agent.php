@@ -97,14 +97,14 @@
         <div class="form-group row">
         <div class="col-sm-6">
             Referred by (Reference Code)
-            <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($user_detail['ref_code'])) {
-                                                                                            echo $user_detail['ref_code'];
-                                                                                          } ?>" name="ref_code">
+            <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($user_detail['referred_by'])) {
+                                                                                            echo $user_detail['referred_by'];
+                                                                                          } ?>" name="referred_by">
           </div>
           <div class="col-sm-6">
             Percentage (%)
-            <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($user_detail['ref_code'])) {
-                                                                                            echo $user_detail['ref_code'];
+            <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($user_detail['percentage'])) {
+                                                                                            echo $user_detail['percentage'];
                                                                                           } ?>" name="percentage">
           </div>
           <div class="col-sm-12" style="text-align: center;">
