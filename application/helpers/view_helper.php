@@ -53,3 +53,17 @@ function init_js_scripts($scripts)
         }
     }
 }
+
+function card_color_logo($report_type){
+    if(isset($report_type)){
+        if(strtolower($report_type) == 'wellness'){
+            return array('border'=> "primary","icon"=> 'fas fa-medkit');
+        } elseif (strtolower($report_type) == 'skin') {
+            return array('border' => "warning", "icon" => 'fas fa-female');
+        } elseif (strtolower($report_type) == 'cardiomet') {
+            return array('border' => "danger", "icon" => 'fas fa-heartbeat');
+        }else{
+            return False;
+        }
+    }
+}
