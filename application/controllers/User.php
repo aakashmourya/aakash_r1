@@ -79,8 +79,8 @@ class User extends CI_Controller
 
 	public function index()
 	{
-			$data['user'] = $this->userDetail;
-		$this->load_view('dashboard/index',$data);
+		$data['user'] = $this->userDetail;
+		$this->load_view('dashboard/index', $data);
 	}
 
 	public function add_agent()
@@ -318,7 +318,14 @@ class User extends CI_Controller
 		redirect("login" . $return_url_query);
 	}
 
-	public function show_contract(){
-		$this->load_view('viewContract.php');
+	public function show_contract()
+	{
+		$contract_no = $this->userDetail['contract_no'];
+		$response = api_post(API_BASE_URL . 'user/get_contract_details', ['contract_no' => $contract_no], get_token_header($this->accessToken));
+		if ($this->validate_response($response) && $response['success'] && empty($response['result'])) {
+			redirect($this->router->fetch_class() . '/show-agents');
+		}
+		$data['refferalDetails'] = $response['result'];
+		$this->load_view('viewContract.php',$data);
 	}
 }

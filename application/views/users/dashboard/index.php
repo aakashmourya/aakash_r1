@@ -2,7 +2,7 @@
         <div class="container-fluid">
           <?php
           // echo "<pre>";
-          print_r($user);
+          //print_r($user);
           ?>
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -119,8 +119,10 @@
                     <div class="col-sm-6">Individual</div> -->
                     <div class="col-sm-4 text-primary">Name :</div>
                     <div class="col-sm-8"><?php echo ucwords($user['name']) ?></div>
+                    <?php if(!empty($user['company_name'])){ ?>
                     <div class="col-sm-4 text-primary">Company Name :</div>
-                    <div class="col-sm-8"><?php echo $user['company_name'] == '' ? 'xxxxx' : $user['company_name'] ?></div>
+                    <div class="col-sm-8"><?php echo $user['company_name'] ?></div>
+                    <?php } ?>
                     <!-- <div class="offset-1 col-sm-5 text-primary">GST No :</div>
                     <div class="col-sm-6">YS012345</div> -->
                     <div class="col-sm-4 text-primary">Phone :</div>
@@ -149,8 +151,10 @@
                   <div class="row">
                     <div class="col-sm-4 text-primary">Registration Type :</div>
                     <div class="col-sm-8"><?php echo $user['reg_type'] ?></div>
+                    <?php if(!empty($user['gst'])){ ?>
                     <div class="col-sm-4 text-primary">GST No :</div>
-                    <div class="col-sm-8"><?php echo $user['gst'] == '' ? 'xxxxx' : $user['gst'] ?></div>
+                    <div class="col-sm-8"><?php echo $user['gst']?></div>
+                    <?php }?>
                     <div class="col-sm-4 text-primary">Referred by :</div>
                     <div class="col-sm-8">Aakash Maurya</div>
                   </div>
