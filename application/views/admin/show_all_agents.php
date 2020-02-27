@@ -32,7 +32,8 @@
                     ?>
 
                         <tr>
-                          <!-- <td hidden><?php //echo $row['id']; ?></td> -->
+                          <!-- <td hidden><?php //echo $row['id']; 
+                                          ?></td> -->
                           <td><?php echo $row['name'] ?></td>
                           <td><?php echo $row['mobile'] ?></td>
                           <td><?php echo $row['email'] ?></td>
@@ -41,10 +42,19 @@
                           <td><?php echo $row['gst'] ?></td>
                           <td><?php echo $row['ref_code'] ?></td>
                           <td>
-                            <a title="Edit Agent" href="<?php echo base_url($this->router->fetch_class()."/edit-agent/".base64_encode($row['user_id'])) ?>" class="btn btn-warning btn-sm">
+                            <a title="Edit Agent" href="<?php echo base_url($this->router->fetch_class() . "/edit-agent/" . base64_encode($row['user_id'])) ?>" class="btn btn-warning btn-sm">
                               <i class="fa fa-pencil"></i>
                             </a>
-                            <!-- <a title="Manage Contract" href="<?php echo base_url($this->router->fetch_class()."/edit-agent/".base64_encode($row['user_id'])) ?>" class="btn btn-info btn-sm">
+                            <?php
+                            if (!empty($row['contract_no'])) {
+                            ?>
+                              <a title="View Contract" href="<?php echo base_url($this->router->fetch_class() . "/view-contract/" . base64_encode($row['contract_no'])) ?>" class="btn btn-secondary btn-sm">
+                                <i class="fa fa-file-text-o"></i>
+                              </a>
+                            <?php
+                            }
+                            ?>
+                            <!-- <a title="Manage Contract" href="<?php echo base_url($this->router->fetch_class() . "/edit-agent/" . base64_encode($row['user_id'])) ?>" class="btn btn-info btn-sm">
                             <i class="fas fa-file-contract"></i>
                             </a> -->
                           </td>
@@ -52,8 +62,8 @@
                         </tr>
 
                     <?php
-                                    }
-                                  } ?>
+                      }
+                    } ?>
 
                   </tbody>
                 </table>

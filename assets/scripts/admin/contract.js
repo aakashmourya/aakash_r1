@@ -35,7 +35,7 @@ $(document).ready(function () {
     formData.append('tests', JSON.stringify(selectedTestList));
     showBtnProgress();
     console.log(formData);
-    AjaxPost(formData, `${USER_BASE_URL}/${"save_contract"}`, AjaxSuccess, AjaxError);
+    AjaxPost(formData, `${USER_BASE_URL}/${FORM_ACTION}`, AjaxSuccess, AjaxError);
 
   });
   function AjaxSuccess(content) {
@@ -93,7 +93,7 @@ $(document).ready(function () {
   });
   function loadTable(list) {
     let packages = JS_ViewData.packages;
-
+    console.log(list, packages);
     let len = list.length;
     setectedTestTable.empty();
     for (let i = 0; i < len; i++) {
@@ -176,5 +176,18 @@ $(document).ready(function () {
     item.percentage = percentage;
 
   }
+  function initTestTable() {
+    let interval = setInterval(packageListener, 1);
+    function packageListener() {
+      let package = JS_ViewData.packages;
+      if (package !== undefined) {
+        selectedTestList = JSON.parse(table_data);
+        loadTable(selectedTestList);
+        clearInterval(interval);
+      }
+    }
+  }
+
+  initTestTable();
   ////////////////////////////////////////////////////////////////
 });
