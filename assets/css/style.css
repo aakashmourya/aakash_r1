@@ -41,3 +41,7 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
 .img_card{
     height: 100%;
 }
+
+.mt-35{
+    margin-top:35px;
+}

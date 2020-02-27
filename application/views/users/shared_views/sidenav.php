@@ -16,7 +16,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item <?php echo ($CURRENT_METHOD=='index')?"active":"";?>">
+      <li class="nav-item <?php echo ($CURRENT_METHOD == 'index') ? "active" : ""; ?>">
         <a class="nav-link" href="<?php echo base_url($CURRENT_CONTROLLER) ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -30,26 +30,39 @@
         Agents
       </div> -->
 
+      <!-- Agent Options -->
+      <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Agents</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+          <div class="bg-white py-2 collapse-inner rounded">            
+            <a class="collapse-item " href="<?php echo base_url('User/show_contract')?>"> <i class="fa fa-eye"></i> View Contract</a>            
+
+          </div>
+        </div>
+      </li>
       <!-- Nav Item - Pages Collapse Menu -->
-      <?php 
-      $agent_active=false;
-      if($CURRENT_METHOD=='add_agent' || $CURRENT_METHOD=='edit_agent' ||$CURRENT_METHOD=='show_agents'||$CURRENT_METHOD=='contract'){
-        $agent_active=true;
+      <?php
+      $agent_active = false;
+      if ($CURRENT_METHOD == 'add_agent' || $CURRENT_METHOD == 'edit_agent' || $CURRENT_METHOD == 'show_agents' || $CURRENT_METHOD == 'contract') {
+        $agent_active = true;
       }
       ?>
-      <!-- <li class="nav-item <?php echo ($agent_active)?"active":"";?>">
+      <!-- <li class="nav-item <?php echo ($agent_active) ? "active" : ""; ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-users"></i>
           <span>Agents</span>
         </a>
-        <div id="collapseTwo" class="collapse <?php echo ($agent_active)?"show":"";?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse <?php echo ($agent_active) ? "show" : ""; ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage Agents</h6>
-            <a class="collapse-item <?php echo ($CURRENT_METHOD=='add_agent')?"active":"";?>" href="<?php echo base_url($CURRENT_CONTROLLER."/add-agent") ?>"> <i class="fas fa-fw fa-user-plus"></i> Add</a>
-            <a class="collapse-item <?php echo ($CURRENT_METHOD=='show_agents')?"active":"";?>" href="<?php echo base_url($CURRENT_CONTROLLER."/show-agents") ?>"> <i class="fas fa-fw fa-list"></i> Show All</a>
+            <a class="collapse-item <?php echo ($CURRENT_METHOD == 'add_agent') ? "active" : ""; ?>" href="<?php echo base_url($CURRENT_CONTROLLER . "/add-agent") ?>"> <i class="fas fa-fw fa-user-plus"></i> Add</a>
+            <a class="collapse-item <?php echo ($CURRENT_METHOD == 'show_agents') ? "active" : ""; ?>" href="<?php echo base_url($CURRENT_CONTROLLER . "/show-agents") ?>"> <i class="fas fa-fw fa-list"></i> Show All</a>
 
             <h6 class="collapse-header">Manage Contracts</h6>
-            <a class="collapse-item <?php echo ($CURRENT_METHOD=='contract')?"active":"";?>" href="<?php echo base_url($CURRENT_CONTROLLER."/contract") ?>"><i class="fas fa-file-signature"></i> Contract</a>
+            <a class="collapse-item <?php echo ($CURRENT_METHOD == 'contract') ? "active" : ""; ?>" href="<?php echo base_url($CURRENT_CONTROLLER . "/contract") ?>"><i class="fas fa-file-signature"></i> Contract</a>
           
           </div>
         </div>
@@ -180,7 +193,7 @@
                                                                             echo $this->userDetail['name'];
                                                                           }
                                                                           ?></span>
-                <img class="img-profile rounded-circle" src="<?php echo base_url('assets/img/avatar5.png')?>">
+                <img class="img-profile rounded-circle" src="<?php echo base_url('assets/img/avatar5.png') ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

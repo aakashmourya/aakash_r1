@@ -1,6 +1,9 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+          <?php
+          // echo "<pre>";
+          print_r($user);
+          ?>
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Profile</h1>
@@ -115,17 +118,17 @@
                     <!-- <div class="offset-1 col-sm-5 text-primary">Registration Type :</div>
                     <div class="col-sm-6">Individual</div> -->
                     <div class="col-sm-4 text-primary">Name :</div>
-                    <div class="col-sm-8">Yatharth Sharma</div>
+                    <div class="col-sm-8"><?php echo ucwords($user['name']) ?></div>
                     <div class="col-sm-4 text-primary">Company Name :</div>
-                    <div class="col-sm-8">Gennextit</div>
+                    <div class="col-sm-8"><?php echo $user['company_name'] == '' ? 'xxxxx' : $user['company_name'] ?></div>
                     <!-- <div class="offset-1 col-sm-5 text-primary">GST No :</div>
                     <div class="col-sm-6">YS012345</div> -->
                     <div class="col-sm-4 text-primary">Phone :</div>
-                    <div class="col-sm-8">0987654321</div>
+                    <div class="col-sm-8"><?php echo $user['mobile'] ?></div>
                     <div class="col-sm-4 text-primary">Email :</div>
-                    <div class="col-sm-8">yatharth.sharma@gennextit.com</div>
+                    <div class="col-sm-8"><?php echo $user['email'] ?></div>
                     <div class="col-sm-4 text-primary">Address :</div>
-                    <div class="col-sm-8">G4,Panchsheel Colony,Bhopura,Ghaziabad (U.P.),2010005</div>
+                    <div class="col-sm-8"><?php echo $user['address'] ?></div>
                     <!-- <div class="offset-1 col-sm-5 text-primary">Referred by :</div>
                     <div class="col-sm-6">Aakash Maurya</div> -->
                   </div>
@@ -133,8 +136,8 @@
               </div>
             </div>
 
-           
-            
+
+
 
             <!-- reffered by and other details -->
             <div class="col-sm-6">
@@ -145,9 +148,9 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-4 text-primary">Registration Type :</div>
-                    <div class="col-sm-8">Individual</div>
+                    <div class="col-sm-8"><?php echo $user['reg_type'] ?></div>
                     <div class="col-sm-4 text-primary">GST No :</div>
-                    <div class="col-sm-8">YS012345</div>
+                    <div class="col-sm-8"><?php echo $user['gst'] == '' ? 'xxxxx' : $user['gst'] ?></div>
                     <div class="col-sm-4 text-primary">Referred by :</div>
                     <div class="col-sm-8">Aakash Maurya</div>
                   </div>
