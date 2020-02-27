@@ -234,7 +234,7 @@ class Admin extends CI_Controller
 				"url" => base_url($this->router->fetch_class() . '/get_packages')
 			)
 		);
-		$this->load_view('contract', $data, 'assets/scripts/admin/contract.js', ['table_data'=>'[]',"FORM_ACTION" => 'save_contract'], $load_data_ajax);
+		$this->load_view('contract', $data, 'assets/scripts/admin/contract.js', ['table_data' => '[]', "FORM_ACTION" => 'save_contract'], $load_data_ajax);
 	}
 	public function edit_contract($contract_no = null)
 	{
@@ -286,7 +286,7 @@ class Admin extends CI_Controller
 		}, $data['selected_tests']);
 		//my_print($test_table_data);
 
-		$this->load_view('contract', $data, 'assets/scripts/admin/contract.js', ['table_data'=> json_encode($test_table_data),"FORM_ACTION" => 'update_contract'], $load_data_ajax);
+		$this->load_view('contract', $data, 'assets/scripts/admin/contract.js', ['table_data' => json_encode($test_table_data), "FORM_ACTION" => 'update_contract'], $load_data_ajax);
 	}
 	public function save_contract()
 	{
@@ -320,19 +320,22 @@ class Admin extends CI_Controller
 	}
 	public function update_contract()
 	{
-		// print_r($_FILES);
+		//	print_r($_FILES);
 		// exit();
-		if (isset($_POST['user_id']) && isset($_POST['from_date']) && isset($_POST['to_date']) && isset($_FILES['file']['name']) && isset($_POST['tests'])) {
+		if (isset($_POST['contract_no']) && isset($_POST['from_date']) && isset($_POST['to_date']) && isset($_FILES['file']['name']) && isset($_POST['tests'])) {
 
 			$data = array(
-				'user_id' => validateInput(base64_decode($_POST['user_id'])),
+				'contract_no' => validateInput(base64_decode($_POST['contract_no'])),
 				'from_date' => date_format(date_create_from_format('d/m/Y', validateInput($_POST['from_date'])), 'Y-m-d'),
 				'to_date' => date_format(date_create_from_format('d/m/Y', validateInput($_POST['to_date'])), 'Y-m-d'),
 				'tests' => $_POST['tests'],
-				'doc_file' => new CURLFILE($_FILES['file']['tmp_name'], $_FILES['file']['type'], $_FILES['file']['name'])
-			);
 
-			$response = api_post_file(API_BASE_URL . 'user/add_contract', $data, get_token_header($this->accessToken));
+			);
+			if (!empty($_FILES['file']['name'])) {
+				$data['doc_file'] = new CURLFILE($_FILES['file']['tmp_name'], $_FILES['file']['type'], $_FILES['file']['name']);
+			}
+
+			$response = api_post_file(API_BASE_URL . 'user/edit_contract', $data, get_token_header($this->accessToken));
 
 			if ($this->validate_response($response, false)) {
 				if ($response['success']) {
@@ -363,7 +366,7 @@ class Admin extends CI_Controller
 			redirect($this->router->fetch_class() . '/show-agents');
 		}
 
-		$data['user_detail'] = $response['result'];
+		$data['contract_detail'] = $response['result'];
 		//my_print($data['user_detail']);
 		$this->load_view('view_contract', $data);
 	}

@@ -3,12 +3,22 @@
 <div class="container-fluid">
 
   <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h4 class="m-0 font-weight-bold text-primary"><?php echo !$isEditForm ? "View Contract" : "Edit Agent"; ?></h4>
+    <div class="card-header py-3 ">
+      <div class="row">
+        <div class="col-sm-9">
+          <h4 class="m-0 font-weight-bold text-primary"><?php echo !$isEditForm ? "View Contract" : "Edit Agent"; ?></h4>
+        </div>
+
+        <div class="col-sm-3" align="right">
+          <a title="Update Contract" href="<?php echo base_url($this->router->fetch_class() . "/edit-contract/" . base64_encode($contract_detail['contract_no'])) ?>" class="btn btn-warning">
+            Update Contract
+          </a>
+        </div>
+      </div>
     </div>
     <div class="card-body">
 
-      <form id="form1" method="post" >
+      <form id="form1" method="post">
         <?php if ($isEditForm) {
         ?>
           <input type="hidden" class="form-control" value="<?php if (isset($user_detail['user_id'])) {
@@ -92,28 +102,28 @@
                                                                         echo $user_detail['address'];
                                                                       } ?></textarea>
           </div>
-          </div>
-          <h4>Referred by</h4>
+        </div>
+        <h4>Referred by</h4>
         <div class="form-group row">
-        <div class="col-sm-6">
+          <div class="col-sm-6">
             Referred by (Reference Code)
             <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($user_detail['referred_by'])) {
-                                                                                            echo $user_detail['referred_by'];
-                                                                                          } ?>" name="referred_by">
+                                                                                echo $user_detail['referred_by'];
+                                                                              } ?>" name="referred_by">
           </div>
           <div class="col-sm-6">
             Percentage (%)
             <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($user_detail['percentage'])) {
-                                                                                            echo $user_detail['percentage'];
-                                                                                          } ?>" name="percentage">
+                                                                                echo $user_detail['percentage'];
+                                                                              } ?>" name="percentage">
           </div>
           <div class="col-sm-12" style="text-align: center;">
             <button type="submit" id="btn" class="btn btn-<?php echo !$isEditForm ? "primary" : "warning"; ?>"> <i class="<?php echo !$isEditForm ? "fas fa-fw fa-user-plus" : "fa fa-pencil"; ?>"></i> <?php echo !$isEditForm ? "Add" : "Update"; ?></button>
           </div>
         </div>
 
-        
-      
+
+
 
 
 
