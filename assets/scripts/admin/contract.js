@@ -16,7 +16,7 @@ $(document).ready(function () {
       error = "Please enter to date";
       to_date.focus();
     }
-    else if ($.trim(file.val()) == "") {
+    else if (FORM_ACTION == "save_contract" && $.trim(file.val()) == "") {
       error = "Please select document";
       file.focus();
     } else if (selectedTestList.length <= 0) {

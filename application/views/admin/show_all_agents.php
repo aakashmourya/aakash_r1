@@ -51,6 +51,10 @@
                               <a title="View Contract" href="<?php echo base_url($this->router->fetch_class() . "/view-contract/" . base64_encode($row['contract_no'])) ?>" class="btn btn-secondary btn-sm">
                                 <i class="fa fa-file-text-o"></i>
                               </a>
+                              <a title="Update Contract" href="<?php echo base_url($this->router->fetch_class() . "/edit-contract/" . base64_encode($row['contract_no'])) ?>" class="btn btn-secondary btn-sm">
+                              <i class="fa fa-file-edit"></i>
+                              </a>
+                             
                             <?php
                             }
                             ?>
