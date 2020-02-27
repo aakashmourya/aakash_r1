@@ -5,6 +5,8 @@ class User extends CI_Controller
 {
 
 	var $userDetail;
+	var $refferalDetail;
+	var $contractDetail;
 	var $accessToken;
 	public function __construct()
 	{
@@ -19,6 +21,7 @@ class User extends CI_Controller
 		} else {
 
 			$this->accessToken = $_SESSION[USER_SESSION_KEY]['token'];
+			//getting user details
 			$response = api_post(API_BASE_URL . 'user/get_user_details', ['user_id' => $_SESSION[USER_SESSION_KEY]['user']['user_id']], get_token_header($this->accessToken));
 
 			if ($this->validate_response($response)) {
@@ -26,6 +29,13 @@ class User extends CI_Controller
 					$this->logout();
 				}
 				$this->userDetail = $response['result'];
+			}
+
+			//getting refferal details
+			$response1 = api_post(API_BASE_URL . 'user/get_user_details', ['user_id' => $_SESSION[USER_SESSION_KEY]['user']['user_id']], get_token_header($this->accessToken));
+
+			if ($this->validate_response($response)) {
+				$this->refferalDetail = $response1['result'];
 			}
 		}
 	}
@@ -69,7 +79,8 @@ class User extends CI_Controller
 
 	public function index()
 	{
-		$this->load_view('dashboard/index');
+			$data['user'] = $this->userDetail;
+		$this->load_view('dashboard/index',$data);
 	}
 
 	public function add_agent()
@@ -305,5 +316,9 @@ class User extends CI_Controller
 		$return_url = get_cookie('return_url');
 		$return_url_query = isset($return_url) ? "?return_url=" . $return_url : "";
 		redirect("login" . $return_url_query);
+	}
+
+	public function show_contract(){
+		$this->load_view('viewContract.php');
 	}
 }
