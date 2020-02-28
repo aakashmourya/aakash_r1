@@ -34,13 +34,14 @@ $(document).ready(function () {
     let formData = new FormData(this);
     formData.append('tests', JSON.stringify(selectedTestList));
     showBtnProgress();
-    console.log(formData);
+    //console.log(formData);
     AjaxPost(formData, `${USER_BASE_URL}/${FORM_ACTION}`, AjaxSuccess, AjaxError);
 
   });
   function AjaxSuccess(content) {
     //hideBtnProgress();
     // showAlertOnPage($("#form1"),content);return;
+    console.log(content);
     try {
       let result = JSON.parse(content);
       if (result.message.code) {
@@ -93,7 +94,7 @@ $(document).ready(function () {
   });
   function loadTable(list) {
     let packages = JS_ViewData.packages;
-    console.log(list, packages);
+   // console.log(list, packages);
     let len = list.length;
     setectedTestTable.empty();
     for (let i = 0; i < len; i++) {

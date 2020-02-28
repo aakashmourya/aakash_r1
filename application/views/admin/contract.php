@@ -17,6 +17,9 @@
               <input type="hidden" class="form-control" value="<?php if (isset($contract_detail['user_id'])) {
                                                                   echo base64_encode($contract_detail['user_id']);
                                                                 } ?>" name="user_id">
+              <input type="hidden" class="form-control" value="<?php if (isset($contract_detail['contract_no'])) {
+                                                                  echo base64_encode($contract_detail['contract_no']);
+                                                                } ?>" name="contract_no">
               Selected Agent
               <input type="text" autocomplete="off" class="form-control" value="<?php if (isset($contract_detail['name'])) {
                                                                                   echo $contract_detail['name'] . ' (' . $contract_detail['ref_code'] . ')';
@@ -81,15 +84,15 @@
                 <?php
 
                 $selected_tests = isset($contract_detail['tests']) ? $contract_detail['tests'] : [];
-                $selected_test_ids=array_column($selected_tests,'test_id');
+                $selected_test_ids = array_column($selected_tests, 'test_id');
 
                 foreach ($tests as $value) {
-                  if(!in_array($value['id'],$selected_test_ids)){
+                  if (!in_array($value['id'], $selected_test_ids)) {
                 ?>
-                  <option data-mrp="<?php echo $value['mrp'] ?>" value="<?php echo $value['id'] ?>"><?php echo ucwords($value['test']) ?></option>
+                    <option data-mrp="<?php echo $value['mrp'] ?>" value="<?php echo $value['id'] ?>"><?php echo ucwords($value['test']) ?></option>
                 <?php
+                  }
                 }
-              }
                 ?>
               </select>
               <div class="input-group-append">

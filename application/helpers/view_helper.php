@@ -2,7 +2,7 @@
 function init_view_data($scripts, $js_contants, $load_data_ajax)
 {
     $CI = &get_instance();
-    set_cookie('return_url', base_url($CI->router->fetch_class() . '/' . $CI->router->fetch_method()), '3600');
+    set_cookie('return_url', current_url(), '3600');
     $vars['scripts'] = $scripts;
     $vars['js_contants'] = $js_contants;
     $vars['load_data_ajax'] = $load_data_ajax;
