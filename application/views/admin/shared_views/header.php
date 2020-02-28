@@ -35,10 +35,15 @@
   <!-- theme colors -->
 <style>
   :root {
+    --primary: #2c81ea;
+    --primary-hover: #0c59b9;
+    --primary-gradient: #7250bd;
+    --form-control-focus: #2c81ea57;
+/* 
     --primary: #4f1ac3;
     --primary-hover: #350d8c;
     --primary-gradient: #7250bd;
-    --form-control-focus: #4f1ac36b;
+    --form-control-focus: #4f1ac36b; */
     }
 </style>
 </head>

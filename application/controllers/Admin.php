@@ -368,7 +368,9 @@ class Admin extends CI_Controller
 
 		$data['contract_detail'] = $response['result'];
 		//my_print($data['user_detail']);
-		$this->load_view('view_contract', $data);
+		//$this->load_view('view_contract', $data);
+
+		$this->load_view('../users/view_contract',$data);
 	}
 
 

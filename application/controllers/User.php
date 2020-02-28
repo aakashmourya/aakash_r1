@@ -321,11 +321,18 @@ class User extends CI_Controller
 	public function show_contract()
 	{
 		$contract_no = $this->userDetail['contract_no'];
+		// if (empty($contract_no)) {
+		// 	redirect($this->router->fetch_class());
+		// }
+
 		$response = api_post(API_BASE_URL . 'user/get_contract_details', ['contract_no' => $contract_no], get_token_header($this->accessToken));
+		//my_print($response );
+
 		if ($this->validate_response($response) && $response['success'] && empty($response['result'])) {
-			redirect($this->router->fetch_class() . '/show-agents');
+			redirect($this->router->fetch_class());
+		} else {
 		}
-		$data['refferalDetails'] = $response['result'];
-		$this->load_view('viewContract.php',$data);
+		$data['contract_detail'] = $response['result'];
+		$this->load_view('view_contract', $data);
 	}
 }
