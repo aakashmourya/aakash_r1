@@ -32,16 +32,11 @@
 
       <!-- Agent Options -->
       <li class="nav-item ">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-users"></i>
-          <span>Agents</span>
+        <a class="nav-link" href="<?php echo base_url('User/show_contract') ?>">
+          <i class="fa fa-eye"></i>
+          <span>View Contract</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
-          <div class="bg-white py-2 collapse-inner rounded">            
-            <a class="collapse-item " href="<?php echo base_url('User/show_contract')?>"> <i class="fa fa-eye"></i> View Contract</a>            
 
-          </div>
-        </div>
       </li>
       <!-- Nav Item - Pages Collapse Menu -->
       <?php
