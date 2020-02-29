@@ -35,7 +35,7 @@ function api_post_file($url, $data = [], $header = [])
         'Content-Type: multipart/form-data',
     );
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_SAFE_UPLOAD, false);
+    curl_setopt($curl, CURLOPT_SAFE_UPLOAD, true);
     curl_setopt_array($curl, array(
         CURLOPT_URL => $url,
         CURLOPT_RETURNTRANSFER => true,

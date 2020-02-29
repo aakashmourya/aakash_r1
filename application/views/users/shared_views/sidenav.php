@@ -26,9 +26,15 @@
       <hr class="sidebar-divider  my-0">
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('User/show_contract')?>">
+        <a class="nav-link" href="<?php echo base_url('User/show_contract') ?>">
           <i class="fa fa-eye"></i>
           <span>View Contract</span></a>
+      </li>
+      <hr class="sidebar-divider  my-0">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('User/create_referral') ?>">
+          <i class="fas fa-pen-square"></i>
+          <span>Create Referral</span></a>
       </li>
       <!-- Heading -->
       <!-- <div class="sidebar-heading">
@@ -36,10 +42,10 @@
       </div> -->
 
       <!-- Agent Options -->
-    
+
       <!-- Nav Item - Pages Collapse Menu -->
-    
-    
+
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

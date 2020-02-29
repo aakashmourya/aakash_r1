@@ -65,3 +65,28 @@ function AjaxPost(formData, url, successCallBack, errorCallBack, args = null) {
 function AjaxError(error) {
     showAlert("Please contact IT. ", 'error');
 }
+
+function JS_ViewData_loaded(variables, timeout = 10000) {
+    let promise = new Promise(function (resolve, reject) {
+        let intervalID = setInterval(packageListener, 1);
+
+        function packageListener() {
+            let loaded = false;
+            loaded = variables.every((v) => {
+                return JS_ViewData[v] !== undefined;
+            })
+
+            if (loaded) {
+                clearInterval(intervalID);
+                resolve(true);
+            }
+        }
+
+        setTimeout(() => {
+            clearInterval(intervalID);
+            reject("error");
+        }, timeout);
+
+    });
+    return promise;
+}
