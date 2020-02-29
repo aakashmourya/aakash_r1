@@ -310,6 +310,12 @@ class User extends CI_Controller
 		echo json_encode($response);
 	}
 
+	public function get_contract_details()
+	{
+		$response = api_post(API_BASE_URL . 'user/get_contract_details', ['contract_no'=> $this->userDetail['contract_no']], get_token_header($this->accessToken));
+		echo json_encode($response);
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata(USER_SESSION_KEY);
@@ -334,5 +340,17 @@ class User extends CI_Controller
 		}
 		$data['contract_detail'] = $response['result'];
 		$this->load_view('view_contract', $data);
+	}
+
+	public function	create_referral(){				
+		$data['tests'] = [];	
+		
+		$load_data_ajax = array(
+			array(
+				"var_name" => "contract_details",
+				"url" => base_url($this->router->fetch_class() . '/get_contract_details')
+			)
+		);
+		$this->load_view('create_referral', $data, 'assets/scripts/users/contract.js', ['table_data' => '[]', "FORM_ACTION" => 'save_contract'], $load_data_ajax);
 	}
 }
